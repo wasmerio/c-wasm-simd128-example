@@ -64,7 +64,7 @@ Beginning simulation.
 time ./build/particle-repel # 4.930 total
 
 # Wasmer SIMD
-time wasmer-release run --backend=llvm --enable-simd build/particle-repel-simd.wasm # 4.980 total
+time wasmer run --backend=llvm --enable-simd build/particle-repel-simd.wasm # 4.980 total
 
 # Wasmer Non-SIMD
 time wasmer run --backend=llvm build/particle-repel.wasm # 11.630 total
