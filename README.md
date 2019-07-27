@@ -18,7 +18,7 @@ The default installation directory is `/opt/wasi-sdk` and you will need write pe
 Build the example with:
 
 ```bash
-/opt/wasi-sdk/bin/clang++ -msimd128 -O2 particle-repel.cc -o particle-repel.wasm -msimd128
+/opt/wasi-sdk/bin/clang++ -msimd128 -O2 particle-repel.cc -o particle-repel.wasm
 ```
 
 and run it with Wasmer:
