@@ -8,8 +8,7 @@ This repo is made to showcase how to emit Wasm SIMD 128 instructions from C++, a
 ./build.sh
 ```
 
-It will download the WASI SDK (the macOS version).
-
+It will download the [WASI SDK 5](https://github.com/CraneStation/wasi-sdk/releases/tag/wasi-sdk-5) (the macOS or linux version, depending on your system).
 
 ## Run it!
 
