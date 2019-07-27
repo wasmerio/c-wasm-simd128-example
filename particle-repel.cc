@@ -24,8 +24,8 @@ void init_velocities() {
 }
 
 float horizontal_add(float4 x) {
-  auto y = x.s02 + x.s13;
-  return y.s0 + y.s1;
+  auto partial_sum = x.xy + x.zw;
+  return partial_sum.x + partial_sum.y;
 }
 
 float distance(float4 x, float4 y) {
