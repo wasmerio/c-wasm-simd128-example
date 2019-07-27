@@ -2,30 +2,39 @@
 
 This repo is made to showcase how to emit Wasm SIMD 128 instructions from C++, and use it with [Wasmer](https://github.com/wasmerio/wasmer).
 
-## Dependencies
-
-This depends on the [wasi-sdk](https://github.com/CraneStation/wasi-sdk). If you don't already have it installed, you can build it:
+## Build
 
 ```bash
-git clone https://github.com/CraneStation/wasi-sdk.git
-cd wasi-sdk
-make
+./build.sh
 ```
 
-The default installation directory is `/opt/wasi-sdk` and you will need write permissions to that directory.
+It will download the WASI SDK (the macOS version).
+
 
 ## Run it!
 
-Build the example with:
+You can run the SIMD version with [Wasmer](https://wasmer.io/):
 
 ```bash
-/opt/wasi-sdk/bin/clang++ -msimd128 -O2 particle-repel.cc -o particle-repel.wasm
+wasmer run --backend=llvm --enable-simd build/particle-repel-simd.wasm
 ```
 
-and run it with Wasmer:
+Or run the non-SIMD version
 
 ```bash
-wasmer run --backend=llvm --enable-simd particle-repel.wasm
+wasmer run --backend=llvm build/particle-repel.wasm
+```
+
+Or run the Native SIMD version
+
+```bash
+./build/particle-repel
+```
+
+
+After running it, the results should be something like:
+
+```
 Beginning simulation.
 5.44089e-21
 9.19434e-22
@@ -47,4 +56,17 @@ Beginning simulation.
 4.06071e-10
 7.64414e-10
 7.57652e-10
+```
+
+## Benchmarks
+
+```
+# Native
+time ./build/particle-repel # 4.930 total
+
+# Wasmer SIMD
+time wasmer-release run --backend=llvm --enable-simd build/particle-repel-simd.wasm # 4.980 total
+
+# Wasmer Non-SIMD
+time wasmer run --backend=llvm build/particle-repel.wasm # 11.630 total
 ```
