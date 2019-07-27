@@ -8,6 +8,7 @@ This depends on the [wasi-sdk](https://github.com/CraneStation/wasi-sdk). If you
 
 ```bash
 git clone https://github.com/CraneStation/wasi-sdk.git
+cd wasi-sdk
 make
 ```
 
