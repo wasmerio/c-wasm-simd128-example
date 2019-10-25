@@ -10,13 +10,13 @@ endif()
 message(STATUS "Building in ${CMAKE_BUILD_TYPE} mode")
 message(STATUS "Building with ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION} on ${CMAKE_SYSTEM}")
 
-set(CMAKE_CXX_FLAGS "$ENV{CFLAGS} -O2")
+set(CMAKE_CXX_FLAGS "$ENV{CFLAGS} -std=c++11 -O2")
 
-add_executable(particle-repel-simd.wasm
+add_executable(particle-repel-simd
     particle-repel.cc
 )
-set_target_properties(particle-repel-simd.wasm PROPERTIES COMPILE_FLAGS "-msimd128")
+set_target_properties(particle-repel-simd PROPERTIES COMPILE_FLAGS "-msimd128")
 
-add_executable(particle-repel.wasm
+add_executable(particle-repel
     particle-repel.cc
 )

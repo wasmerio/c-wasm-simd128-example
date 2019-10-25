@@ -1,2 +1,5 @@
 wasi-sdk-5.0*
 build
+/CMakeFiles
+/cmake_install.cmake
+/build-wasm
